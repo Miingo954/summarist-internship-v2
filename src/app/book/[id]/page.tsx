@@ -1,0 +1,1 @@
+import {Suspense}from"react";import BookDetails from"@/components/BookDetails";export default function Page(){return <Suspense fallback={<main className="dashboard"><div className="book-skeleton"/></main>}><BookDetails/></Suspense>}

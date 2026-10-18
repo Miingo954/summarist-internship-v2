@@ -1,0 +1,1 @@
+import {Suspense}from"react";import Player from"@/components/Player";export default function Page(){return <Suspense fallback={<div className="player-page"><div className="book-skeleton"/></div>}><Player/></Suspense>}

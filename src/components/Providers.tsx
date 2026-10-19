@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { Provider } from "react-redux";
-import { hydrateLibrary, store } from "@/store/store";
+import { hydrateAuth, hydrateLibrary, store } from "@/store/store";
 import AuthModal from "@/components/AuthModal";
 
 function LibraryPersistence() {
@@ -10,8 +10,13 @@ function LibraryPersistence() {
     try {
       const saved = window.localStorage.getItem("summarist-library");
       if (saved) store.dispatch(hydrateLibrary(JSON.parse(saved)));
+      const auth = window.localStorage.getItem("summarist-auth");
+      if (auth) store.dispatch(hydrateAuth(JSON.parse(auth)));
     } catch { window.localStorage.removeItem("summarist-library"); }
-    return store.subscribe(() => window.localStorage.setItem("summarist-library", JSON.stringify(store.getState().library.books)));
+    return store.subscribe(() => {
+      window.localStorage.setItem("summarist-library", JSON.stringify(store.getState().library.books));
+      window.localStorage.setItem("summarist-auth", JSON.stringify(store.getState().auth));
+    });
   }, []);
   return null;
 }

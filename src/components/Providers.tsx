@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { Provider } from "react-redux";
 import { hydrateAuth, hydrateLibrary, store } from "@/store/store";
 import AuthModal from "@/components/AuthModal";
 import { onAuthStateChanged } from "firebase/auth";
 import { getFirebaseAuth } from "@/lib/firebase";
+
+const subscribeToClient = () => () => undefined;
 
 function LibraryPersistence() {
   useEffect(() => {
@@ -28,5 +30,6 @@ function LibraryPersistence() {
 }
 
 export default function Providers({ children }: { children: React.ReactNode }) {
-  return <Provider store={store}><LibraryPersistence/><AuthModal />{children}</Provider>;
+  const clientReady = useSyncExternalStore(subscribeToClient, () => true, () => false);
+  return <Provider store={store}>{clientReady ? <><LibraryPersistence/><AuthModal />{children}</> : null}</Provider>;
 }

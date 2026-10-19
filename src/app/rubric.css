@@ -1,0 +1,7 @@
+.forgot-password{display:block;margin:12px auto 0;border:0;background:none;color:var(--blue);font-size:13px}
+.auth-modal button:disabled{cursor:wait;opacity:.65}
+.disabled-nav{cursor:not-allowed}
+.sidebar button{display:flex;align-items:center;gap:12px;color:#596467}
+.book-tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.book-tags span{border-radius:5px;background:#eef4f2;padding:8px 12px;color:var(--navy);font-size:13px;font-weight:700}
+.empty-state img{display:block;max-width:100%;height:auto;margin:10px auto 22px}

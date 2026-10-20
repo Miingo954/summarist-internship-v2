@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { createUserWithEmailAndPassword, getRedirectResult, GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithRedirect } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { FaGoogle } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { closeAuth, loginGuest, loginWithEmail, setAuthMode } from "@/store/store";
@@ -20,17 +20,6 @@ export default function AuthModal() {
     document.body.style.overflow = authOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [authOpen]);
-
-  useEffect(() => {
-    getRedirectResult(getFirebaseAuth())
-      .then((credential) => {
-        if (!credential) return;
-        dispatch(loginWithEmail(credential.user.email || "Google user"));
-        dispatch(closeAuth());
-        router.push("/for-you");
-      })
-      .catch((error) => setMessage(authError(error)));
-  }, [dispatch, router]);
 
   if (!authOpen) return null;
 
@@ -61,7 +50,12 @@ export default function AuthModal() {
   };
   const googleLogin = async () => {
     setBusy(true); setMessage("");
-    try { await signInWithRedirect(getFirebaseAuth(), new GoogleAuthProvider()); }
+    try {
+      const provider = new GoogleAuthProvider();
+      provider.setCustomParameters({ prompt: "select_account" });
+      const credential = await signInWithPopup(getFirebaseAuth(), provider);
+      finish(credential.user.email || "Google user");
+    }
     catch (error) { setMessage(authError(error)); }
     finally { setBusy(false); }
   };

@@ -58,7 +58,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     <div className="app-shell">
       <button className={`sidebar-backdrop ${menuOpen ? "is-visible" : ""}`} type="button" aria-label="Close navigation menu" tabIndex={menuOpen ? 0 : -1} onClick={() => setMenuOpen(false)} />
       <aside id="app-navigation" className={`sidebar ${menuOpen ? "is-open" : ""}`} aria-label="Main navigation">
-        <button className="mobile-sidebar-close" type="button" aria-label="Close navigation menu" onClick={() => setMenuOpen(false)}><FiX /></button>
+        {menuOpen ? <button className="mobile-sidebar-close" type="button" aria-label="Close navigation menu" onClick={() => setMenuOpen(false)}><FiX /></button> : null}
         <Image src="/assets/logo.png" alt="Summarist" width={180} height={44} />
         <nav>
           <Link className={path === "/for-you" ? "active" : ""} href="/for-you"><FiHome />For you</Link>

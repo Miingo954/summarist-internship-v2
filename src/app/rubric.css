@@ -43,7 +43,8 @@
 @media(max-width:768px){.app-shell{grid-template-columns:1fr}.sidebar{top:auto;bottom:0;width:100%;height:64px;padding:4px 10px}.sidebar>img,.sidebar>div,.sidebar nav span{display:none!important}.sidebar nav{display:flex;margin:0;justify-content:space-around}.sidebar nav a{display:flex!important;min-height:54px;padding:4px 12px!important;border:0!important;font-size:11px!important;flex-direction:column!important}.app-main{padding-bottom:64px}.app-topbar{padding:0 16px}.selected-reference,.selected-skeleton{width:100%}.selected-reference{grid-template-columns:1fr 100px 1fr}.selected-divider{display:none}.selected-reference>.book-cover-fallback,.selected-reference>img{width:100px!important}.reference-book-card{flex-basis:150px}.reference-book-card>.book-cover-fallback,.reference-book-card>img{width:150px!important;height:210px!important}.reference-font-controls{display:none}.reference-audio{bottom:64px;height:auto;grid-template-columns:40px 1fr auto;padding:8px 12px}.reference-audio .audio-progress{grid-column:1/-1}.book-detail{grid-template-columns:1fr}.plan-hero h1{font-size:32px}.plan-hero:before{border-radius:0}.plan-features{grid-template-columns:1fr}.plan-card{grid-template-columns:24px 1fr}.plan-card strong{grid-column:2}.hero{grid-template-columns:1fr}.benefit-panel>div:first-child{font-size:24px}}
 
 /* Responsive application navigation and player */
-.mobile-nav-brand,.mobile-sidebar-close,.sidebar-backdrop{display:none}
+.mobile-nav-brand,.sidebar-backdrop{display:none}
+.sidebar .mobile-sidebar-close{display:none}
 .audio-footer.reference-audio{right:32px;bottom:16px;left:32px;z-index:90;border:0;border-radius:18px;overflow:hidden;box-shadow:0 14px 38px rgb(3 43 65 / 28%)}
 
 @media(max-width:900px){
@@ -52,7 +53,7 @@
   .app-topbar{position:sticky;top:0;z-index:45;display:grid;height:auto;min-height:72px;grid-template-columns:auto minmax(180px,1fr) 42px;align-items:center;gap:16px;padding:12px 18px}
   .mobile-nav-brand{display:contents}
   .mobile-nav-brand>img{grid-column:1;width:132px;height:auto}
-  .mobile-menu-toggle,.mobile-sidebar-close{display:grid;width:42px;height:42px;place-items:center;border:0;border-radius:6px;background:#032b41;color:#fff}
+  .mobile-menu-toggle,.sidebar .mobile-sidebar-close{display:grid;width:42px;height:42px;place-items:center;border:0;border-radius:6px;background:#032b41;color:#fff}
   .mobile-menu-toggle{grid-column:3;justify-self:end}
   .mobile-menu-toggle svg,.mobile-sidebar-close svg{width:24px;height:24px}
   .mobile-sidebar-close{position:absolute;top:18px;right:18px}

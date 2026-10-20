@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FiBookOpen, FiHelpCircle, FiHome, FiLogIn, FiLogOut, FiMenu, FiSearch, FiSettings, FiX, FiZap } from "react-icons/fi";
+import { FiBookOpen, FiHelpCircle, FiHome, FiLogIn, FiLogOut, FiMenu, FiSearch, FiSettings, FiZap } from "react-icons/fi";
 import { signOut } from "firebase/auth";
 import { getFirebaseAuth } from "@/lib/firebase";
 import { logout, openAuth } from "@/store/store";
@@ -58,7 +58,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     <div className="app-shell">
       <button className={`sidebar-backdrop ${menuOpen ? "is-visible" : ""}`} type="button" aria-label="Close navigation menu" tabIndex={menuOpen ? 0 : -1} onClick={() => setMenuOpen(false)} />
       <aside id="app-navigation" className={`sidebar ${menuOpen ? "is-open" : ""}`} aria-label="Main navigation">
-        {menuOpen ? <button className="mobile-sidebar-close" type="button" aria-label="Close navigation menu" onClick={() => setMenuOpen(false)}><FiX /></button> : null}
+        {menuOpen ? <button className="mobile-sidebar-close" type="button" aria-label="Close navigation menu" onClick={() => setMenuOpen(false)}><span aria-hidden="true">×</span></button> : null}
         <Image src="/assets/logo.png" alt="Summarist" width={180} height={44} />
         <nav>
           <Link className={path === "/for-you" ? "active" : ""} href="/for-you"><FiHome />For you</Link>
